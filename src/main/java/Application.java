@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +21,12 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         sender.send("Spring Kafka Producer and Consumer Example");
-        sender.send("Example 2");
+        int i = 0;
+        while (true) {
+        	sender.send("Example "+i);
+        	TimeUnit.SECONDS.sleep(2);
+        	i++;
+        }
 
     }
 }
