@@ -1,6 +1,4 @@
-hello\APIController.class
-hello\UserInfo.class
-hello\listeners\KafkaListenerFactory.class
-hello\MainController.class
-hello\Application.class
-hello\listeners\MessageListener.class
+kafka\Receiver.class
+kafka\sender\Sender.class
+kafka\ReceiverConfig.class
+kafka\sender\SenderConfig.class

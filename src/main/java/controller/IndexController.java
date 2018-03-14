@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,14 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import kafka.Receiver;
+import model.Incidence;
+
 
 @Controller
-
 public class IndexController {
-    private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
+    
+	private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
+	public static List<Incidence> incidences = new ArrayList<>();
+	private static List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
-
+	
+	public static List<SseEmitter> getSsEmitters() {
+		return sseEmitters;
+	}
+	
 	@RequestMapping("/index")
 	public String index() {
 		return "index";
@@ -35,4 +43,18 @@ public class IndexController {
         }
   
       
+   
+    @RequestMapping("/test")
+    SseEmitter sendMessages() {
+    	SseEmitter emiter = new SseEmitter(100000L);
+    	synchronized (sseEmitters) {
+    		sseEmitters.add(emiter);
+    		emiter.onCompletion(() -> {
+    			synchronized(sseEmitters ) {
+    				sseEmitters.remove(emiter);
+    			}
+    		});
+    		return emiter;
+		}
+    }
 }

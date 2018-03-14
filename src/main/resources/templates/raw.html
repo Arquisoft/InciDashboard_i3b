@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<body>
+<script type="text/javascript">
+	var source = new EventSource("/test")
+	source.onmessage = function(event) {
+		document.getElementById("messages").innerHTML += (event.data + "<br>");
+	};
+</script>
+	<div id="messages"></div>
+</body>
+</html>

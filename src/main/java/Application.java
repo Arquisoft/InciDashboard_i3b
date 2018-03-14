@@ -23,7 +23,7 @@ public class Application implements CommandLineRunner {
         sender.send("Spring Kafka Producer and Consumer Example");
         int i = 0;
         while (true) {
-        	sender.send("Example "+i);
+        	sender.send("Example-"+i);
         	TimeUnit.SECONDS.sleep(2);
         	i++;
         }
