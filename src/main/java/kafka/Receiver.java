@@ -18,12 +18,10 @@ public class Receiver {
 
     private static final Logger LOG = LoggerFactory.getLogger(Receiver.class);
 
-    @Autowired
-    IndexController ic;
+  
     @KafkaListener(topics = "test")
     public void listen(@Payload String message) {
         LOG.info("received message='{}'", message);
-        //ic.showMessage(message, "test");//este método tiene que actualizar el html
         System.out.println("New message received: \"" + message + "\"");
         
         String[] text = message.split("-");

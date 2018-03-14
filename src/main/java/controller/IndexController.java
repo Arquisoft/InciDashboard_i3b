@@ -44,7 +44,7 @@ public class IndexController {
   
       
    
-    @RequestMapping("/test")
+    @RequestMapping("/raw")
     SseEmitter sendMessages() {
     	SseEmitter emiter = new SseEmitter(100000L);
     	synchronized (sseEmitters) {
