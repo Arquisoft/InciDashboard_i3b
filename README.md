@@ -5,6 +5,7 @@ This module is part of the project implemented for the laboratory assignment of 
 * Module 2.- [Agents management](https://github.com/Arquisoft/Agents_i3b)
 * Module 3.- [Incidence Management](https://github.com/Arquisoft/InciManager_i3b)
 * Module 4.- [Analysis and dashboard](https://github.com/Arquisoft/InciDashboard_i3b)
+* Common module.- [Inci_i3b](https://github.com/Arquisoft/Inci_i3b)
 
 # InciDashboard
 In this repository you will find the implementation of the fourth module. It allows the visualization and management of the incidents by the operators (properties, information about the incidents, state...). It will receive the incidents submitted by the [InciManagement module](https://github.com/Arquisoft/InciManager_i3b) via Apache Kafka and it will allow the visualization of the geolocated incidents in a map, as well as their values, state and evolution.
