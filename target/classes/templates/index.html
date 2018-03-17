@@ -44,8 +44,9 @@
 			cell4.innerHTML = obj.username;
 			cell5.innerHTML = obj.usertype;
 			cell6.innerHTML = obj.state;
-			var str = "link";
-			var result = str.link("https://www.w3schools.com");
+			var str = "Manage";
+			var strref= "/manage/"+obj.id;
+			var result = str.link(strref);
 			cell7.innerHTML = result;
 		}
 	</script>
@@ -73,7 +74,7 @@
 					<th>Agent</th>
 					<th>Agent type</th>
 					<th>State</th>
-					<th>Manage</th>
+					<th></th>
 				</tr>
 			</table>
 		</div>
