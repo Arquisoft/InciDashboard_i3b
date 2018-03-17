@@ -5,6 +5,7 @@ import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import model.Incidence;
+import repository.IncidenceRepository;
 
 
 @Controller
@@ -25,6 +27,9 @@ public class IndexController {
 	public static List<SseEmitter> getSsEmitters() {
 		return sseEmitters;
 	}
+	
+	@Autowired
+	private IncidenceRepository repo;
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
@@ -58,5 +63,13 @@ public class IndexController {
     		});
     		return emiter;
 		}
+    }
+    
+    
+    @RequestMapping("/manage")
+    public String manage(Model model) {
+    	List<Incidence> aux = repo.findAll();
+    	model.addAttribute("incis", aux);
+    	return "manage";
     }
 }

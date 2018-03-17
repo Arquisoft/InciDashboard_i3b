@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Incidence Management</title>
+</head>
+<body>
+
+<table id="myTable">
+	<tr>
+		<th>ID</th>
+	</tr>
+	<tr th:each="in : ${incis}">
+		<td th:text="${in.getInciId()}"></td>
+	</tr>
+</table>
+
+</body>
+</html>
