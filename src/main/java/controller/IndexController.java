@@ -6,6 +6,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -26,7 +27,8 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/index")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("incidences", incidences);
 		return "index";
 	}
 	
@@ -34,7 +36,7 @@ public class IndexController {
   	public String showMessage(String data, String topic) {
 	  final SseEmitter sseEmitter = new SseEmitter();
             try {
-                sseEmitter.send("Message: " + data);
+                sseEmitter.send(data);
                 LOG.info("send");
             } catch (IOException e) {
             	LOG.error("Browser has closed");

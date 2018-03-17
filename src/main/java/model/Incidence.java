@@ -31,7 +31,7 @@ public class Incidence {
 	
 	@Override
 	public String toString() {
-		return String.format("Incidence: %s; %s", name, description);
+		return "{ \"name\":\"" + name + "\", \"description\":\"" + description + "\"}";
 	}
 
 }

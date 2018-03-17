@@ -7,19 +7,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import model.Incidence;
+
 @Service
 public class Sender {
 
     private static final Logger LOG = LoggerFactory.getLogger(Sender.class);
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Incidence> kafkaTemplate;
 
    // @Value("${app.topic.foo}")
     private String topic = "test";
 
-    public void send(String message){
-        LOG.info("sending message='{}' to topic='{}'", message, topic);
-        kafkaTemplate.send(topic, message);
+    public void send(Incidence inci){
+        LOG.info("sending message='{}' to topic='{}'", inci.toString(), topic);
+        kafkaTemplate.send(topic, inci);
     }
 }
