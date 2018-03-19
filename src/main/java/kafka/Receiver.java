@@ -18,24 +18,6 @@ public class Receiver {
 
     private static final Logger LOG = LoggerFactory.getLogger(Receiver.class);
 
-  
-//    @KafkaListener(topics = "test")
-//    public void listen(@Payload String message) {
-//        LOG.info("received message='{}'", message);
-//        System.out.println("New message received: \"" + message + "\"");
-//        
-//        String[] text = message.split("-");
-//        
-//        Incidence inci = new Incidence(text[0], text[1]);
-//        IndexController.incidences.add(inci);
-//        for(SseEmitter s : IndexController.getSsEmitters()) {
-//        	try {
-//        		s.send("Message: " + message);
-//        	} catch(IOException e) {
-//        		e.printStackTrace();
-//        	}
-//        }
-//    }
     
     @KafkaListener(topics = "test")
     public void listen(@Payload Incidence inci) {
