@@ -5,14 +5,12 @@
 <title>Incidence Management</title>
 </head>
 <body>
-	<h1>Incidence Manager</h1>
+	<h1>Incidence comment: <span th:text="${inci.getComment()}"></span> added!</h1>
 	<p><strong>Incidence ID: </strong><span th:text="${inci.getInciId()}"></span></p>
 	<p><strong>Incidence Name: </strong><span th:text="${inci.getInciName()}"></span></p>
 	<p><strong>Incidence Description: </strong><span th:text="${inci.getInciDescription()}"></span></p>
-		<form action="#" th:action="@{/manage/addIncidence}" th:object="${inci}" method="post">
-			<p>COMMENTS: <input type="text" th:field="*{comments}"/></p>
-			
-			<p><input type="submit" value="Submit"/></p>
-		</form>
+	<p><strong>Comment: </strong><span th:text="${inci.getComment()}"></span></p>
+	
+	
 </body>
 </html>
