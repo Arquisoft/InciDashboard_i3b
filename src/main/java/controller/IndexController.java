@@ -28,14 +28,15 @@ public class IndexController {
 	public static List<SseEmitter> getSsEmitters() {
 		return sseEmitters;
 	}
-	
+	public static final String FORM_VIEW = "index";
+
 	@Autowired
 	private IncidenceRepository repo;
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
 		model.addAttribute("incidences", incidences);
-		return "index";
+		return FORM_VIEW;
 	}
 	
     @RequestMapping(path = "/index", method = RequestMethod.POST)
@@ -67,10 +68,5 @@ public class IndexController {
     }
     
     
-    @RequestMapping(value="/manage/{id}")
-    public String manage(Model model, @PathVariable("id") String id) {
-    	Incidence aux = repo.findOne(id);
-    	model.addAttribute("inci", aux);
-    	return "manage";
-    }
+   
 }
