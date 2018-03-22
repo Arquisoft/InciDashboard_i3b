@@ -18,10 +18,10 @@ import repository.IncidenceRepository;
 @RequestMapping("/manage")
 public class ManageController {
 	
-	public static final String FORM_VIEW = "manage";
+	public static final String MANAGE_VIEW = "manage";
 	public static final String RESULT_VIEW = "result";
 
-	public Incidence lastIncidence=null;
+	public static  Incidence lastIncidence=null;
 	
 	@Autowired
 	private IncidenceRepository repo;
@@ -31,7 +31,7 @@ public class ManageController {
     	Incidence aux = repo.findOne(id);
     	lastIncidence = aux;
     	model.addAttribute("inci", aux);
-    	return FORM_VIEW;
+    	return MANAGE_VIEW;
     }
 	 
 	 @PostMapping("/addIncidence")

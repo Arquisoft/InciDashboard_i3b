@@ -56,6 +56,15 @@
 
 <body>
 <!-- Page content -->
+<div>
+	<h3>SearchIncidence</h3>
+	<div>
+		<form action="#" th:action="@{/index/searchIncidence}" method="get">
+			<p><strong>ID: </strong> <input type="text" th:name="id"/></p>	
+			<p><input type="submit" value="Submit"/></p>
+		</form>
+	</div>
+</div>
 <div class="container-fluid">
 
 	<div class="row">
@@ -79,6 +88,7 @@
 			</table>
 		</div>
 	</div>
+	
 	
 	
 </div>

@@ -10,8 +10,7 @@
 	<p><strong>Incidence Name: </strong><span th:text="${inci.getInciName()}"></span></p>
 	<p><strong>Incidence Description: </strong><span th:text="${inci.getInciDescription()}"></span></p>
 		<form action="#" th:action="@{/manage/addIncidence}" th:object="${inci}" method="post">
-			<p>COMMENTS: <input type="text" th:field="*{comments}"/></p>
-			
+			<p><strong>COMMENTS: </strong> <input type="text" th:field="*{comments}"/></p>	
 			<p><input type="submit" value="Submit"/></p>
 		</form>
 </body>
