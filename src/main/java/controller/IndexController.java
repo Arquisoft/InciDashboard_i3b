@@ -44,7 +44,7 @@ public class IndexController {
 	}
 	
 	@GetMapping("/index/searchIncidence")
-	public ModelAndView searchIncidence(@RequestParam(name = "id", required=true) String myid) {
+	public ModelAndView searchIncidence(@RequestParam(name = "id", required=false) String myid) {
 		if(myid==null)
 	        return  new ModelAndView(INDEX_VIEW);
 		ModelAndView mav = new ModelAndView(MANAGE_VIEW);
