@@ -13,3 +13,25 @@ In this repository you will find the implementation of the fourth module. It all
 # Authors
 * [Jorge García Marín (UO245241)](https://github.com/JorgeGarciaMarin)
 * [Sergio Santano Álvarez (UO244858)](https://github.com/sergiosantano)
+
+# Set up your machine
+For executing this module you will need to have installed in your computer some software:
+* First of all you will need MongoDB. You can download and install mongo from [here](https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.2-signed.msi/download). Once installed you must create an empty folder called "data\db" in the root of the partition where you installed mongo (Example: "C:\data\db").
+* You will also need to have Apache-Zookeper and Apache-Kafka installed. You can download them both from  [here](https://www.apache.org/dyn/closer.cgi?path=/kafka/1.0.1/kafka_2.11-1.0.1.tgz). Once you have downloaded them, decompress the files and download the script you have in the root directory of github with name script_ejecucion.bat. Move it to the kafka folder at the same level as the bin folder or congif folder.
+
+# Run the module
+Once your machine has the needed software installed, this are the steps you have to follow:
+1. Clone the repository in your computer
+1. Run mongod.exe
+1. Start zookeeper and kafka by executing the script_ejecucion.bat file. This step is not compulsory. You can start it following the instructions of [Kafka quickstart](https://kafka.apache.org/quickstart).
+1. Open a new command line window and move to the directory where you have cloned the repository.
+1. Execute the command 
+```bash
+mvn clean install
+```
+```bash
+mvn test
+```
+```bash
+mvn spring-boot:run
+```
