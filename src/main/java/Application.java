@@ -37,7 +37,7 @@ public class Application implements CommandLineRunner {
         	repository.save(inci);
         	if(repository.count()>i)
         		System.err.println("Incidence saved");
-        	TimeUnit.SECONDS.sleep(2);
+        	TimeUnit.SECONDS.sleep(7);
         	i++;
         }
 
