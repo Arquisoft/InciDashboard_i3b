@@ -5,16 +5,12 @@ import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
 import model.Incidence;
-import repository.IncidenceRepository;
 
 
 @Controller
@@ -29,9 +25,6 @@ public class IndexController {
 		return sseEmitters;
 	}
 	public static final String FORM_VIEW = "index";
-
-	@Autowired
-	private IncidenceRepository repo;
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
@@ -50,8 +43,6 @@ public class IndexController {
             }
             return data;
         }
-  
-      
    
     @RequestMapping("/raw")
     SseEmitter sendMessages() {
@@ -66,7 +57,6 @@ public class IndexController {
     		return emiter;
 		}
     }
-    
     
    
 }
