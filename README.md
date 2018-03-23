@@ -25,14 +25,10 @@ Once your machine has the needed software installed, this are the steps you have
 1. Run mongod.exe
 1. Start zookeeper and kafka by executing the script_ejecucion.bat file. This step is not compulsory. You can start it following the instructions of [Kafka quickstart](https://kafka.apache.org/quickstart).
 1. Open a new command line window and move to the directory where you have cloned the repository.
-1. Execute the command 
+1. Execute the commands
 ```bash
 mvn clean install
-```
-```bash
 mvn test
-```
-```bash
 mvn spring-boot:run
 ```
 1. One it´s running, open http://localhost:8090/index in your browser
