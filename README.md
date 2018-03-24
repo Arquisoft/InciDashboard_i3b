@@ -1,7 +1,7 @@
 # Incident Management System (Group i3b)
 [![Build Status](https://travis-ci.org/Arquisoft/InciDashboard_i3b.svg?branch=master)](https://travis-ci.org/Arquisoft/InciDashboard_i3b)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/43af5c0e2a6745df932bd77d84a0103f)](https://www.codacy.com/app/jelabra/Loader_i3b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/Loader_i3b&amp;utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/Arquisoft/Loader_i3b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_i3b)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/43af5c0e2a6745df932bd77d84a0103f)](https://www.codacy.com/app/jelabra/InciDashboard_i3b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/InciDashboard_i3b&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/Arquisoft/InciDashboard_i3b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/InciDashboard_i3b)
 
 This module is part of the project implemented for the laboratory assignment of the course "Software Architecture". The course is part of the Degree in Software Engineering, School of Computer Science Engineering, University of Oviedo. The whole system is divided in four modules developed by two subteams ([Team A](https://github.com/orgs/Arquisoft/teams/course1718_i3b2) and [Team B](https://github.com/orgs/Arquisoft/teams/course1718_i3b1)). These modules are:
 
