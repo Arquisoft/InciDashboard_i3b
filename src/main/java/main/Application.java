@@ -1,3 +1,4 @@
+package main;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,17 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-    	repository.deleteAll();
-        int i = 0;
-        while (true) {
-        	Incidence inci = IncidenceGenerator.randomInci(i);
-        	sender.send(inci);
-        	repository.save(inci);
-        	if(repository.count()>i)
-        		System.err.println("Incidence saved");
-        	TimeUnit.SECONDS.sleep(7);
-        	i++;
-        }
+//    	repository.deleteAll();
+//        int i = 0;
+//        while (true) {
+//        	Incidence inci = IncidenceGenerator.randomInci(i);
+//        	sender.send(inci);
+//        	repository.save(inci);
+//        	if(repository.count()>i)
+//        		System.err.println("Incidence saved");
+//        	TimeUnit.SECONDS.sleep(2);
+//        	i++;
+//        }
 
     }
 }

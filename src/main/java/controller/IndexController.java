@@ -46,11 +46,11 @@ public class IndexController {
 	@GetMapping("/index/searchIncidence")
 	public ModelAndView searchIncidence(@RequestParam(name = "id", required=false) String myid) {
 		if(myid==null)
-	        return  new ModelAndView(INDEX_VIEW);
+	        return  new ModelAndView("redirect:/index");
 		ModelAndView mav = new ModelAndView(MANAGE_VIEW);
 		Incidence incidence = repo.findOne(myid);
 		if (incidence==null)
-	        return  new ModelAndView(INDEX_VIEW);	
+	        return  new ModelAndView("redirect:/index");	
 		ManageController.lastIncidence = incidence;
 		mav.addObject("inci",incidence);
 		return mav;
