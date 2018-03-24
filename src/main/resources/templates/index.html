@@ -44,10 +44,7 @@
 			cell4.innerHTML = obj.username;
 			cell5.innerHTML = obj.usertype;
 			cell6.innerHTML = obj.state;
-			var str = "Manage";
-			var strref= "/manage/"+obj.id;
-			var result = str.link(strref);
-			cell7.innerHTML = result;
+			cell7.innerHTML = obj.operator;
 		}
 	</script>
 	
@@ -56,6 +53,16 @@
 
 <body>
 <!-- Page content -->
+<div>
+	<h3>Login</h3>
+	<div>
+		<form action="#" th:action="@{/index/login}" method="get">
+			<p><strong>Operator ID: </strong> <input type="text" th:name="id"/></p>	
+			<p><strong>Password: </strong> <input type="password" th:name="pass"/></p>	
+			<p><input type="submit" value="Submit"/></p>
+		</form>
+	</div>
+</div>
 <div>
 	<h3>SearchIncidence</h3>
 	<div>
@@ -83,7 +90,16 @@
 					<th>Agent</th>
 					<th>Agent type</th>
 					<th>State</th>
-					<th></th>
+					<th>Operator</th>
+				</tr>
+				<tr th:each="inci : ${incidences}">
+					<td th:text="${inci.getInciId()}"></td>
+					<td th:text="${inci.getInciName()}"></td>
+					<td th:text="${inci.getInciDescription()}"></td>
+					<td th:text="${inci.getUsername()}"></td>
+					<td th:text="${inci.getUsertype()}"></td>
+					<td th:text="${inci.getStateStr()}"></td>
+					<td th:text="${inci.getOperatorId()}"></td>
 				</tr>
 			</table>
 		</div>

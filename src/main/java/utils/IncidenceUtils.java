@@ -4,7 +4,7 @@ import java.util.Random;
 
 import model.Incidence;
 
-public class IncidenceGenerator {
+public class IncidenceUtils {
 	
 	private static String[] usernames = {"user1","sensor2","company3","user4"};
 	private static int[] usertypes = {1,2,3,4};
@@ -12,9 +12,9 @@ public class IncidenceGenerator {
 	private static String[] description = {"Descripcion1","Descripcion2","Descripcion3","Descripcion4"};
 	private static String[] location = {"43;5","82:74","115:20","20:63"};
 	private static String[] info = {"ExtraInfo1","ExtraInfo2","ExtraInfo3","ExtraInfo4"};
-	private static int[] state = {1,2,3,4};
+	private static int[] state = {0,1,2,3};
 	private static int[] expiration = {20181003,20180625,20180101,20180906};
-	private static String[] operator = {"OperatorPaco","OperatorJuan","OperatorJorge","OperatorPedro"};
+	private static String[] operator = {"operator1","operator2","operator3","operator4"};
 	
 	
 	public static Incidence randomInci(int i) {
@@ -31,6 +31,21 @@ public class IncidenceGenerator {
 		inci.setExpiration(expiration[r.nextInt(4)]);
 		inci.setOperatorId(operator[r.nextInt(4)]);
 		return inci;
+	}
+	
+	public static String getStateString(int i) {
+		switch(i) {
+			case 0:
+				return "Open";
+			case 1:
+				return "In process";
+			case 2:
+				return "Closed";
+			case 3:
+				return "Cancelled";
+			default:
+				return "";
+		}
 	}
 
 }

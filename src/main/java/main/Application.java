@@ -1,4 +1,5 @@
 package main;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import kafka.sender.Sender;
 import model.Incidence;
+import model.Operator;
 import repository.IncidenceRepository;
-import utils.IncidenceGenerator;
+import repository.OperatorRepository;
+import utils.IncidenceUtils;
 
 @SpringBootApplication
 @ComponentScan({"controller", "kafka"})
@@ -26,21 +29,38 @@ public class Application implements CommandLineRunner {
     private Sender sender;
     
     @Autowired
-    private IncidenceRepository repository;
+    private IncidenceRepository inciRepository;
+    
+    @Autowired
+    private OperatorRepository operatorRepository;
 
     @Override
     public void run(String... strings) throws Exception {
-//    	repository.deleteAll();
-//        int i = 0;
-//        while (true) {
-//        	Incidence inci = IncidenceGenerator.randomInci(i);
-//        	sender.send(inci);
-//        	repository.save(inci);
-//        	if(repository.count()>i)
-//        		System.err.println("Incidence saved");
-//        	TimeUnit.SECONDS.sleep(2);
-//        	i++;
-//        }
+    	if(operatorRepository.count()==0)
+    		addMockOperators();
+    	inciRepository.deleteAll();
+        int i = 0;
+        while (true) {
+        	Incidence inci = IncidenceUtils.randomInci(i);
+        	sender.send(inci);
+        	inciRepository.save(inci);
+        	if(inciRepository.count()>i)
+        		System.err.println("Incidence saved");
+        	TimeUnit.SECONDS.sleep(5);
+        	i++;
+        }
 
     }
+
+	private void addMockOperators() {
+		Operator o1 = new Operator("operator1", "asd");
+		Operator o2 = new Operator("operator2", "asd");
+		Operator o3 = new Operator("operator3", "asd");
+		Operator o4 = new Operator("operator4", "asd");
+		operatorRepository.insert(o1);
+		operatorRepository.insert(o2);
+		operatorRepository.insert(o3);
+		operatorRepository.insert(o4);
+		
+	}
 }

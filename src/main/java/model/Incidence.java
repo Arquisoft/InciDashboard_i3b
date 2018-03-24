@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import utils.IncidenceUtils;
+
 @Document(collection="incidences")
 public class Incidence {
 	
@@ -17,7 +19,7 @@ public class Incidence {
 	private String inci_name, inci_description, inci_location, inci_info;
 	private List<String> tags, otherfields;
 	private int state, expiration;
-	private String operatorId;
+	private String operatorId, stateStr;
 	private List<String> comments;
 	
 	public Incidence() {
@@ -41,6 +43,7 @@ public class Incidence {
 		this.expiration = expiration;
 		this.operatorId = operatorId;
 		this.comments = comments;
+		this.stateStr = IncidenceUtils.getStateString(state);
 	}
 
 	@JsonIgnore
@@ -131,6 +134,7 @@ public class Incidence {
 
 	public void setState(int state) {
 		this.state = state;
+		this.stateStr = IncidenceUtils.getStateString(state);
 	}
 
 	public int getExpiration() {
@@ -157,6 +161,14 @@ public class Incidence {
 		this.comments = comments;
 	}
 	
+	public String getStateStr() {
+		return stateStr;
+	}
+
+	public void setStateStr(String stateStr) {
+		this.stateStr = stateStr;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -168,7 +180,7 @@ public class Incidence {
 		sb.append(" \"description\":\"").append(inci_description).append("\",");
 		sb.append(" \"location\":\"").append(inci_location).append("\",");
 		sb.append(" \"info\":\"").append(inci_info).append("\",");
-		sb.append(" \"state\":").append(state).append(",");
+		sb.append(" \"state\":\"").append(stateStr).append("\",");
 		sb.append(" \"exiration\":").append(expiration).append(",");
 		sb.append(" \"operator\":\"").append(operatorId).append("\"");
 		sb.append('}');

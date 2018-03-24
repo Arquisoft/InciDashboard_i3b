@@ -10,7 +10,7 @@ public class IncidenceGeneratorTest {
 
 	@Test
 	public void test() {
-		Incidence inci = IncidenceGenerator.randomInci(1);
+		Incidence inci = IncidenceUtils.randomInci(1);
 		assertNotNull(inci.getInciId());
 		assertNotNull(inci.getUsername());
 		assertNotNull(inci.getUsertype());
