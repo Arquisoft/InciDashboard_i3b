@@ -43,18 +43,30 @@
 
 
 <body>
-<!-- Page content -->
-<div>
-	<h3>Login</h3>
-	<div>
-		<form action="#" th:action="@{/index/login}" method="get">
-			<p><strong>Operator ID: </strong> <input type="text" th:name="id"/></p>	
-			<p><strong>Password: </strong> <input type="password" th:name="pass"/></p>	
-			<p><input type="submit" value="Submit"/></p>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+   
+    <div class="navbar-header">
+      <a class="navbar-brand">Dashboard</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<form action="#" th:action="@{/index/login}" method="get" class="navbar-form navbar-right" role="form">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<input type="text" th:name="id" class="form-control" placeholder="Operator ID"/>                         
+				</div>
+				<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				<input type="password" th:name="pass" class="form-control" placeholder="Password"/>                                       
+			</div>
+			<button type="submit" class="btn btn-primary">Login</button>
 		</form>
 	</div>
-</div>
+  </div>
+</nav>
 
+<!-- Page content -->
 <div class="container-fluid">
 
 	<div class="row">

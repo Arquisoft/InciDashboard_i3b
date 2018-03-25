@@ -7,7 +7,7 @@
     <meta name="description" content="dashboard proyect"/>
     <meta name="author" content="i1b"/>
 
-    <title>Dashboard_i1b</title>
+    <title>Operator Panel</title>
     
     
     <!-- Bootstrap Core CSS -->
@@ -62,11 +62,24 @@
 
 
 <body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+   
+    <div class="navbar-header">
+      <a class="navbar-brand">Dashboard</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    	<p class="navbar-text" th:text="${operator.getOperatorId()}" id="loggedoperator"></p>
+    	<div class="navbar-form navbar-right">
+    		<a href="/index" class="btn btn-primary"> <span class="glyphicon glyphicon-log-out"></span> Log out</a>
+    	</div>
+	</div>
+  </div>
+</nav>
+
+
 <!-- Page content -->
-<div>
-	<p th:text="${operator.getOperatorId()}" id="loggedoperator"></p>
-	<p><a href="/index">logout</a></p>
-</div>
 <div class="container-fluid">
 
 	<div class="row">
