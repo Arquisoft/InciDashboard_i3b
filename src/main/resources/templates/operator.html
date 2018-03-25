@@ -36,6 +36,25 @@
 			cell5.innerHTML = obj.usertype;
 			cell6.innerHTML = obj.state;
 			cell7.innerHTML = obj.operator;
+			
+			var operator = document.getElementById("loggedoperator").innerHTML;
+			if(operator.localeCompare(obj.operator)==0) {
+				var table2 = document.getElementById("tableAsignedIncidences");
+				var row2 = table2.insertRow(1);
+				var cell8 = row2.insertCell(0);
+				var cell9 = row2.insertCell(1);
+				var cell10 = row2.insertCell(2);
+				var cell11 = row2.insertCell(3);
+				var cell12 = row2.insertCell(4);
+				cell8.innerHTML = obj.id;
+				cell9.innerHTML = obj.name;
+				cell10.innerHTML = obj.description;
+				cell11.innerHTML = obj.state;
+				var str = "Manage";
+				var strref = "/manage/"+obj.id;
+				var result = str.link(strref);
+				cell12.innerHTML = result;
+			}
 		}
 	</script>
 	
@@ -45,6 +64,7 @@
 <body>
 <!-- Page content -->
 <div>
+	<p th:text="${operator.getOperatorId()}" id="loggedoperator"></p>
 	<p><a href="/index">logout</a></p>
 </div>
 <div class="container-fluid">
