@@ -43,6 +43,7 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
+		OperatorController.loggedOperator=null;
 		List<Incidence> incis = inciRepo.findAll();
 		model.addAttribute("incidences", incis);
 		return INDEX_VIEW;
@@ -54,26 +55,13 @@ public class IndexController {
 		
 		Operator operatorFromDB = operatorRepo.findOne(operatorId);
 		if(operatorFromDB!=null && operatorFromDB.getPassword().equals(password)) {
-			ModelAndView mav = new ModelAndView(OPERATOR_VIEW);
+			ModelAndView mav = new ModelAndView("redirect:/operatorpanel");
 			OperatorController.loggedOperator = operatorFromDB;
 			return mav;
 		}
 		else	
 			return  new ModelAndView("redirect:/index");
 	}
-	
-	@GetMapping("/index/searchIncidence")
-	public ModelAndView searchIncidence(@RequestParam(name = "id", required=false) String myid) {
-		if(myid==null)
-	        return  new ModelAndView("redirect:/index");
-		ModelAndView mav = new ModelAndView(MANAGE_VIEW);
-		Incidence incidence = inciRepo.findOne(myid);
-		if (incidence==null)
-	        return  new ModelAndView("redirect:/index");	
-		ManageController.lastIncidence = incidence;
-		mav.addObject("inci",incidence);
-		return mav;
-	 }
    
 	@RequestMapping(path = "/index", method = RequestMethod.POST)
   	public String showMessage(String data, String topic) {

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,7 +24,9 @@ public class Incidence {
 	private List<String> comments;
 	
 	public Incidence() {
-		
+		comments = new ArrayList<String>();
+		tags = new ArrayList<String>();
+		otherfields = new ArrayList<String>();
 	}
 	
 	public Incidence(String inciId, String username, int usertype, String inci_name, String inci_description,
@@ -167,6 +170,16 @@ public class Incidence {
 
 	public void setStateStr(String stateStr) {
 		this.stateStr = stateStr;
+	}
+	
+	public String getTagsStr() {
+		if(tags == null)
+			return "";
+		String result = "";
+		for(String s : tags) {
+			result += s + ", ";
+		}
+		return result;
 	}
 
 	@Override

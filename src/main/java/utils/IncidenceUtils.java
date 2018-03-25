@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import model.Incidence;
@@ -46,6 +48,15 @@ public class IncidenceUtils {
 			default:
 				return "";
 		}
+	}
+
+	public static List<Incidence> filterByOperator(List<Incidence> incis, String operatorId) {
+		List<Incidence> result = new ArrayList<Incidence>();
+		for(Incidence i : incis) {
+			if(i.getOperatorId().equals(operatorId))
+				result.add(i);
+		}
+		return result;
 	}
 
 }

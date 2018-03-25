@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,13 +37,20 @@ public class ManageController {
 	 
 	 @PostMapping("/addIncidence")
 	 public ModelAndView addIncidence(@ModelAttribute ("inci") Incidence inci) {
-		 ModelAndView mav = new ModelAndView(RESULT_VIEW);
-		 ArrayList<String> comments = new ArrayList<String>();
-		comments.add(inci.getComment());
-		lastIncidence.setComments(comments);    
+		 repo.delete(lastIncidence);
+		 List<String> comments = lastIncidence.getComments();
+		 comments.add(inci.getComment());
+		 lastIncidence.setComments(comments); 
+		 lastIncidence.setState(inci.getState());
+		 repo.insert(lastIncidence);
 		 
-		 mav.addObject("inci",lastIncidence);
-		 return mav;
+		 String url = "redirect:/manage/" + lastIncidence.getInciId();
+		 return new ModelAndView(url);
 	 }
 
+	 
+	 @PostMapping("/return")
+	 public ModelAndView returnDashboard() {
+		 return new ModelAndView("redirect:/operatorpanel");
+	 }
 }
