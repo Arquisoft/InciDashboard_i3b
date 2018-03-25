@@ -22,7 +22,7 @@ import main.Application;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest({ "server.port=0" })
+@IntegrationTest({ "8090" })
 public class IndexControllerTest {
 
 
