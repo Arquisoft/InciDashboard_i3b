@@ -27,7 +27,7 @@ public class OperatorController {
 			return "redirect:index";
 		List<Incidence> incis = repo.findAll();
 		model.addAttribute("incidences", incis);
-		
+		model.addAttribute("operator", loggedOperator);
 		List<Incidence> assignedIncis = IncidenceUtils.filterByOperator(incis, loggedOperator.getOperatorId());
 		model.addAttribute("assignedIncis", assignedIncis);
 		return "operator";
