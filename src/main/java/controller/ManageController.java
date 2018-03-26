@@ -16,26 +16,23 @@ import model.Incidence;
 import repository.IncidenceRepository;
 
 @Controller
-@RequestMapping("/manage")
 public class ManageController {
 	
-	public static final String MANAGE_VIEW = "manage";
-	public static final String RESULT_VIEW = "result";
 
 	public static  Incidence lastIncidence=null;
 	
 	@Autowired
 	private IncidenceRepository repo;
 	
- 	@RequestMapping(value="/{id}")
+ 	@RequestMapping(value="/manage/{id}")
     public String manage(Model model, @PathVariable("id") String id) {
     	Incidence aux = repo.findOne(id);
     	lastIncidence = aux;
     	model.addAttribute("inci", aux);
-    	return MANAGE_VIEW;
+    	return "manage";
     }
 	 
-	 @PostMapping("/addIncidence")
+	 @PostMapping("/manage/addIncidence")
 	 public ModelAndView addIncidence(@ModelAttribute ("inci") Incidence inci) {
 		 repo.delete(lastIncidence);
 		 List<String> comments = lastIncidence.getComments();
