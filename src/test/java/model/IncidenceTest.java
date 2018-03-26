@@ -32,7 +32,6 @@ public class IncidenceTest {
 		assertEquals("inci_description", inci.getInciDescription());
 		assertEquals("inci_location", inci.getInciLocation());
 		assertEquals("inci_info", inci.getInciInfo());
-		assertEquals("inci_location", inci.getInciLocation());
 		assertNotNull(inci.getTags());
 		assertNotNull(inci.getComments());
 		assertNotNull(inci.getOtherfields());
@@ -40,10 +39,30 @@ public class IncidenceTest {
 		assertEquals(1, inci.getExpiration());
 		assertEquals("operatorId", inci.getOperatorId());
 
+		/*Test setters*/
+		inci.setInciId("Id2");
+		assertEquals("Id2", inci.getInciId());
 
+		inci.setUsername("Tsunami");
+		assertEquals("Tsunami", inci.getUsername());
 
+		inci.setUsertype(3);
+		assertEquals(3, inci.getUsertype());
 
+		inci.setInciName("a");
+		assertEquals("a", inci.getInciName());
 
+		inci.setInciDescription("b");
+		assertEquals("b", inci.getInciDescription());
+
+		inci.setInciLocation("c");
+		assertEquals("c", inci.getInciLocation());
+
+		inci.setInciInfo("d");
+		assertEquals("d", inci.getInciInfo());
+
+		inci.setOperatorId("e");
+		assertEquals("e", inci.getOperatorId());
 
 		
 	}
