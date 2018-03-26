@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ DashBoardTest.class, MockTest.class })
+@SuiteClasses({ DashBoardTest.class})
 public class AllSeleniumTests {
 
 }
