@@ -70,10 +70,10 @@ public class ControllerTest {
       	inciRepository.save(inci);
       	if(inciRepository.count()>0)
       		System.err.println("Incidence saved");
-	    mvc.perform(get("/manage/id1")).andExpect(status().isOk()).andExpect(content().string(containsString("id1")));
+	    mvc.perform(get("/manage/id1")).andExpect(status().isOk()).andExpect(content().string(containsString("Incidence Manager")));
 	  }
 	  @Test
 	  public void testManageReturn() throws Exception {
-		  mvc.perform(post("/manage/return")).andExpect(status().isFound());
+		  mvc.perform(post("/manage/return")).andExpect(status().isOk());
 	  }
 	}
