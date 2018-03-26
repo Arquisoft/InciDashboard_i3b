@@ -46,7 +46,7 @@ public class ManageController {
 	 }
 
 	 
-	 @PostMapping("/return")
+	 @PostMapping("/manage/return")
 	 public ModelAndView returnDashboard() {
 		 return new ModelAndView("redirect:/operatorpanel");
 	 }
