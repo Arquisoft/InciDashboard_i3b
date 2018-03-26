@@ -23,17 +23,12 @@ import repository.OperatorRepository;
 @Controller
 public class IndexController {
     
-	private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
-	public static List<Incidence> incidences = new ArrayList<>();
-	private static List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
-
-	
-	public static List<SseEmitter> getSsEmitters() {
-		return sseEmitters;
-	}
 	public static final String INDEX_VIEW = "index";
 	public static final String MANAGE_VIEW = "manage";
 	public static final String OPERATOR_VIEW = "operator";
+	private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
+	public static List<Incidence> incidences = new ArrayList<>();
+	private static List<SseEmitter> sseEmitters = Collections.synchronizedList(new ArrayList<>());
 
 	@Autowired
 	private IncidenceRepository inciRepo;
@@ -41,6 +36,10 @@ public class IndexController {
 	@Autowired
 	private OperatorRepository operatorRepo;
 	
+	@RequestMapping("/")
+	public String landing(Model model) {
+		return "redirect:/index";
+	}
 	@RequestMapping("/index")
 	public String index(Model model) {
 		OperatorController.loggedOperator=null;
@@ -88,6 +87,9 @@ public class IndexController {
     		return emiter;
 		}
     }
+	public static List<SseEmitter> getSsEmitters() {
+		return sseEmitters;
+	}
     
    
 }
