@@ -36,19 +36,19 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-    	if(operatorRepository.count()==0)
-    		addMockOperators();
-    	inciRepository.deleteAll();
-        int i = 0;
-        while (true) {
-        	Incidence inci = IncidenceUtils.randomInci(i);
-        	sender.send(inci);
-        	inciRepository.save(inci);
-        	if(inciRepository.count()>i)
-        		System.err.println("Incidence saved");
-        	TimeUnit.SECONDS.sleep(5);
-        	i++;
-        }
+//    	if(operatorRepository.count()==0)
+//    		addMockOperators();
+//    	inciRepository.deleteAll();
+//        int i = 0;
+//        while (true) {
+//        	Incidence inci = IncidenceUtils.randomInci(i);
+//        	sender.send(inci);
+//        	inciRepository.save(inci);
+//        	if(inciRepository.count()>i)
+//        		System.err.println("Incidence saved");
+//        	TimeUnit.SECONDS.sleep(5);
+//        	i++;
+//        }
 
     }
 
