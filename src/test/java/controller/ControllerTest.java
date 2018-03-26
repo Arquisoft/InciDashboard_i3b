@@ -74,6 +74,6 @@ public class ControllerTest {
 	  }
 	  @Test
 	  public void testManageReturn() throws Exception {
-		  mvc.perform(post("/manage/return")).andExpect(status().isOk());
+		  mvc.perform(post("/manage/return")).andExpect(status().isFound());
 	  }
 	}
