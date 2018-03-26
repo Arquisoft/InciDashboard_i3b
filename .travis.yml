@@ -1,4 +1,6 @@
 language: java
+services: 
+- mongodb
 sudo: required
 jdk:
 - oraclejdk8
