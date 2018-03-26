@@ -1,8 +1,12 @@
 package controller;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,37 +21,59 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import kafka.sender.Sender;
 import main.Application;
+import model.Incidence;
+import model.Operator;
+import repository.IncidenceRepository;
+import repository.OperatorRepository;
+import utils.IncidenceUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest({ "8090" })
-public class IndexControllerTest {
-
+public class ControllerTest {
+	
 
 	  @Autowired
 	  private WebApplicationContext context;
 
 	  private MockMvc mvc;
+	  
+	    @Autowired
+	    private Sender sender;
+	    
+	    @Autowired
+	    private IncidenceRepository inciRepository;
 
 	  @Before
 	  public void setUp() throws Exception {
 	    mvc = MockMvcBuilders.webAppContextSetup(context).build();
 	  }
 
-	  @Test
-	  public void testLanding() throws Exception {
-	//    mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Home")));
-	  }
 
 	  @Test
-	  public void testSort() throws Exception {
+	  public void testIndex() throws Exception {
 	    mvc.perform(get("/index")).andExpect(status().isOk()).andExpect(content().string(containsString("Dashboard_i1b")));
 	  }
-
+	  
 	  @Test
-	  public void testSearchOK() throws Exception {
-	 //   mvc.perform(get("/search?name=pepe")).andExpect(status().isOk()).andExpect(content().string(containsString("pepe")));
+	  public void testIndexLogin() throws Exception {
+		  mvc.perform(get("/index/login?id=operator1&pass=asd")).andExpect(status().isFound());
+	  }
+	  
+	  @Test
+	  public void testManage() throws Exception {
+		Incidence inci = IncidenceUtils.randomInci(1);
+      	sender.send(inci);
+      	inciRepository.save(inci);
+      	if(inciRepository.count()>0)
+      		System.err.println("Incidence saved");
+	    mvc.perform(get("/manage/id1")).andExpect(status().isOk()).andExpect(content().string(containsString("id1")));
+	  }
+	  @Test
+	  public void testManageReturn() throws Exception {
+		  mvc.perform(post("/manage/return")).andExpect(status().isFound());
 	  }
 	}
