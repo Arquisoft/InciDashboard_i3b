@@ -26,6 +26,8 @@ public class ManageController {
 	
  	@RequestMapping(value="/manage/{id}")
     public String manage(Model model, @PathVariable("id") String id) {
+ 		if(OperatorController.loggedOperator==null)
+ 			return "redirect:/index";
     	Incidence aux = repo.findOne(id);
     	lastIncidence = aux;
     	model.addAttribute("inci", aux);
