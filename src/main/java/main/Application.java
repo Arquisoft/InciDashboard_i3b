@@ -19,11 +19,6 @@ import utils.IncidenceUtils;
 @ComponentScan({"controller", "kafka"})
 @EnableMongoRepositories(basePackageClasses = IncidenceRepository.class)
 public class Application implements CommandLineRunner {
-
-    public static void main(String[] args) {
-    	SpringApplication.run(Application.class, args);
-    }
-    
     @Autowired
     private Sender sender;
     
@@ -32,7 +27,11 @@ public class Application implements CommandLineRunner {
     
     @Autowired
     private OperatorRepository operatorRepository;
-
+    
+    
+    public static void main(String[] args) {
+    	SpringApplication.run(Application.class, args);
+    }
     @Override
     public void run(String... strings) throws Exception {
 //    	if(operatorRepository.count()==0)
