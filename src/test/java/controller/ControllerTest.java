@@ -21,7 +21,9 @@ import org.springframework.web.context.WebApplicationContext;
 import kafka.sender.Sender;
 import main.Application;
 import model.Incidence;
+import model.Operator;
 import repository.IncidenceRepository;
+import repository.OperatorRepository;
 import utils.IncidenceUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -38,9 +40,10 @@ public class ControllerTest {
 	  
 	    @Autowired
 	    private Sender sender;
-	    
 	    @Autowired
 	    private IncidenceRepository inciRepository;
+	    @Autowired
+	    private OperatorRepository operatorRepository;
 
 	  @Before
 	  public void setUp() throws Exception {
@@ -65,6 +68,8 @@ public class ControllerTest {
       	inciRepository.save(inci);
       	if(inciRepository.count()>0)
       		System.err.println("Incidence saved");
+      	Operator o1 = new Operator("operator1", "asd");
+      	OperatorController.loggedOperator=o1;
 	    mvc.perform(get("/manage/id1")).andExpect(content().string(containsString("Incidence Manager")));
 	  }
 	  @Test
